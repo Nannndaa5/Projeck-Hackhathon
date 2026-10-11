@@ -391,28 +391,6 @@ LANGFLOW_API_KEY=your_langflow_api_key_here
 
 ---
 
-## 📸 Screenshots
-
-### 🔐 Halaman Login
-![Login Page](docs/screenshots/01-login.png)
-
-### 📊 Dashboard Utama — KPI Cards & Charts
-![Dashboard](docs/screenshots/02-dashboard.png)
-
-### 📋 Tabel Inventaris — Filter, Search, Status Badge
-![Inventory Table](docs/screenshots/03-table.png)
-
-### 🤖 Chat AI — Asisten Inventori
-![AI Chat Widget](<docs/screenshots/05-chat ai.png>)
-
-### ➕ Tambah Produk Baru
-![Add Product Modal](docs/screenshots/04-tablei.png)
-
-### ➕ Tambah Produk Baru (2)
-![Add Product Modal 2](docs/screenshots/06-add-product-2.png)
-
----
-
 <div align="center">
 
 **Dibuat dengan ❤️ menggunakan IBM Bob + LangFlow**
