@@ -4,9 +4,14 @@ Aplikasi web untuk mengelola inventaris dan operasional toko UMKM. Tersedia dash
 
 ## Peran IBM Bob dan LangFlow
 
-- **IBM Bob** membantu proses pengembangan sebagai AI coding assistant untuk pengerjaan kode, debugging, dan konfigurasi. IBM Bob bukan bagian dari runtime aplikasi atau fitur yang digunakan langsung oleh pemilik toko.
-- **LangFlow** adalah visual builder untuk flow AI dan dapat digunakan sebagai backend chatbot pada demo lokal. Dengan `VITE_AI_MODE=langflow-first`, aplikasi mencoba LangFlow terlebih dahulu lalu menggunakan Gemini sebagai fallback.
-- Deployment online menggunakan mode default `gemini-only`; chatbot dan OCR memanggil Gemini melalui endpoint server aplikasi.
+- **IBM Bob** digunakan selama development sebagai AI coding assistant untuk scaffolding UI React, debugging, dan konfigurasi. Contoh pekerjaan project ini mencakup diagnosis integrasi/model AI, penyiapan proxy lokal, dan perbaikan pengelolaan API key. Bob bukan bagian dari runtime aplikasi.
+- **LangFlow** adalah visual builder untuk menyusun flow AI. Flow dapat menerima prompt analisis inventori dan mengembalikan jawaban chatbot; LangFlow Desktop dapat digunakan sebagai backend pada demo lokal.
+- **Integrasi MCP Bob–LangFlow:** Bob menggunakan MCP untuk menemukan dan memanggil flow LangFlow sebagai tools saat development. `supergateway` menjembatani koneksi MCP stdio dari Bob dengan endpoint LangFlow yang menggunakan Streamable HTTP. Integrasi developer ini terpisah dari chatbot aplikasi dan credential MCP harus disimpan lokal, tidak di README atau Git.
+- Deployment online secara default menggunakan `gemini-only`; chatbot dan OCR memanggil Gemini melalui endpoint server aplikasi. Mode `langflow-first` mencoba LangFlow terlebih dahulu lalu fallback ke Gemini.
+
+```text
+IBM Bob ──MCP stdio──> supergateway ──Streamable HTTP──> LangFlow MCP endpoint
+```
 
 ## Prasyarat
 

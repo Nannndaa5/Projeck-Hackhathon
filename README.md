@@ -26,9 +26,26 @@ Chatbot inventori menerima data stok terkini dari aplikasi saat menjawab pertany
 
 ## Peran IBM Bob dan LangFlow
 
-- **IBM Bob** digunakan sebagai AI coding assistant selama pengembangan untuk membantu menyusun dan memperbaiki kode, menelusuri bug, serta mengerjakan konfigurasi aplikasi. Bob adalah alat bantu developer, bukan fitur yang berjalan di dalam aplikasi untuk pemilik toko.
-- **LangFlow** digunakan sebagai visual builder untuk merancang dan menjalankan flow AI, serta sebagai opsi backend chatbot pada demo lokal. Dalam mode `langflow-first`, aplikasi mengirim prompt analisis inventori ke flow LangFlow dan beralih ke Gemini jika LangFlow gagal.
-- **Gemini** melayani chatbot dan OCR pada deployment online melalui API server. Default aplikasi adalah `gemini-only`; API key tetap disimpan di environment server.
+- **IBM Bob** berperan sebagai AI coding assistant selama pengembangan. Bob membantu scaffolding struktur dan komponen React, debugging, pembaruan integrasi, serta konfigurasi aplikasi. Contoh pekerjaan yang didokumentasikan pada project ini meliputi menelusuri masalah model LangFlow, menyiapkan proxy API lokal, dan menjaga API key berada di environment server. Bob adalah alat bantu developer, bukan fitur runtime untuk pemilik toko.
+- **LangFlow** digunakan untuk menyusun flow AI secara visual. Flow menerima prompt berisi konteks inventori dan menghasilkan respons untuk chatbot. LangFlow Desktop dapat digunakan pada demo lokal; aplikasi juga memiliki endpoint server LangFlow opsional.
+- **MCP Bob ↔ LangFlow** menghubungkan IBM Bob ke project LangFlow agar Bob dapat menemukan dan memanggil flow sebagai tools saat proses development. Konfigurasi project menggunakan `supergateway` sebagai bridge: Bob berkomunikasi melalui MCP stdio, lalu `supergateway` meneruskan koneksi ke endpoint MCP LangFlow dengan transport Streamable HTTP. Dengan demikian Bob dapat berinteraksi dengan flow LangFlow tanpa menyalin API key ke dokumentasi. Integrasi MCP ini adalah tool development dan terpisah dari request chatbot yang digunakan pemilik toko.
+- **Gemini** melayani chatbot dan OCR pada deployment online melalui API server. Default aplikasi adalah `gemini-only`; API key tetap disimpan di environment server. Pada mode lokal `langflow-first`, aplikasi mencoba LangFlow sebelum fallback ke Gemini.
+
+Ringkasan alur integrasi MCP:
+
+```text
+IBM Bob (MCP client)
+    │ MCP stdio
+    ▼
+supergateway
+    │ Streamable HTTP
+    ▼
+LangFlow MCP endpoint
+    │
+    └── tools untuk menjalankan flow dalam project LangFlow
+```
+
+Konfigurasi MCP memerlukan LangFlow Desktop yang aktif serta akses ke endpoint project. Simpan API key di konfigurasi lokal yang tidak di-commit; jangan menaruh credential atau URL bertoken di README.
 
 ## Fitur
 
