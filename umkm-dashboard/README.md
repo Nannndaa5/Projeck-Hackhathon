@@ -2,6 +2,12 @@
 
 Aplikasi web untuk mengelola inventaris dan operasional toko UMKM. Tersedia dashboard stok untuk pemilik, POS untuk transaksi, pengelolaan pemasok dan purchase order, OCR faktur, serta chatbot AI yang menganalisis data inventaris aktual.
 
+## Peran IBM Bob dan LangFlow
+
+- **IBM Bob** membantu proses pengembangan sebagai AI coding assistant untuk pengerjaan kode, debugging, dan konfigurasi. IBM Bob bukan bagian dari runtime aplikasi atau fitur yang digunakan langsung oleh pemilik toko.
+- **LangFlow** adalah visual builder untuk flow AI dan dapat digunakan sebagai backend chatbot pada demo lokal. Dengan `VITE_AI_MODE=langflow-first`, aplikasi mencoba LangFlow terlebih dahulu lalu menggunakan Gemini sebagai fallback.
+- Deployment online menggunakan mode default `gemini-only`; chatbot dan OCR memanggil Gemini melalui endpoint server aplikasi.
+
 ## Prasyarat
 
 - Node.js 20.19+ atau 22.12+
@@ -65,3 +71,5 @@ Akun demo dan pemeriksaan role bekerja di frontend untuk demonstrasi, bukan aute
 Project dapat di-deploy ke Vercel. Atur root directory ke `umkm-dashboard`, framework ke Vite, dan tambahkan `GEMINI_API_KEY` sebagai environment variable server agar chatbot dan OCR tersedia.
 
 Demo online: https://smart-retail-ai-ten.vercel.app/
+
+IBM Bob adalah alat bantu development, sedangkan LangFlow hanya diperlukan bila menjalankan mode AI lokal `langflow-first`; keduanya bukan dependency yang harus dipasang untuk memakai deployment online.

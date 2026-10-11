@@ -2,6 +2,8 @@
 
 # Smart Retail AI
 
+**Proyek Hackathon — IBM Bob × LangFlow**
+
 **Dashboard operasional toko untuk UMKM Indonesia**
 
 Kelola inventaris, transaksi kasir, pemasok, dan purchase order dalam satu aplikasi. Chatbot AI membantu menganalisis stok aktual untuk menemukan prioritas restock, stok berlebih, dan risiko kedaluwarsa.
@@ -21,6 +23,12 @@ Kelola inventaris, transaksi kasir, pemasok, dan purchase order dalam satu aplik
 Smart Retail AI menyatukan alur kerja toko sehari-hari dalam dashboard yang mudah digunakan. Pemilik toko dapat memantau kondisi stok dan finansial, sementara kasir dapat mencari produk, mengelola keranjang, dan mencatat pembayaran.
 
 Chatbot inventori menerima data stok terkini dari aplikasi saat menjawab pertanyaan. Analisisnya berfokus pada produk di bawah batas minimum, stok berlebih dibanding estimasi laku, serta tanggal kedaluwarsa. Sistem tidak memiliki riwayat penjualan persisten; estimasi laku merupakan data produk, bukan laporan transaksi historis.
+
+## Peran IBM Bob dan LangFlow
+
+- **IBM Bob** digunakan sebagai AI coding assistant selama pengembangan untuk membantu menyusun dan memperbaiki kode, menelusuri bug, serta mengerjakan konfigurasi aplikasi. Bob adalah alat bantu developer, bukan fitur yang berjalan di dalam aplikasi untuk pemilik toko.
+- **LangFlow** digunakan sebagai visual builder untuk merancang dan menjalankan flow AI, serta sebagai opsi backend chatbot pada demo lokal. Dalam mode `langflow-first`, aplikasi mengirim prompt analisis inventori ke flow LangFlow dan beralih ke Gemini jika LangFlow gagal.
+- **Gemini** melayani chatbot dan OCR pada deployment online melalui API server. Default aplikasi adalah `gemini-only`; API key tetap disimpan di environment server.
 
 ## Fitur
 
@@ -105,6 +113,7 @@ Untuk Vercel, tambahkan `GEMINI_API_KEY` melalui pengaturan Environment Variable
 - Vercel Functions untuk endpoint AI
 - Google Gemini untuk chatbot dan ekstraksi OCR
 - LangFlow sebagai opsi backend AI lokal
+- IBM Bob sebagai AI coding assistant selama pengembangan (bukan dependency/runtime aplikasi)
 
 ## Struktur Project
 
